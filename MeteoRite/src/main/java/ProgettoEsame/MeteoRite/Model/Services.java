@@ -60,9 +60,11 @@ public class Services
 
 		} catch (IOException | ParseException e) {
 			e.printStackTrace();
+			System.out.println("ECCEZIONE");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		
 		//System.out.println("FATTO CHIAMATA ID");
 		
@@ -136,12 +138,15 @@ public class Services
 			
 				jo = (JSONObject) JSONValue.parseWithException(data);
 
-		} catch (IOException | ParseException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
+		} catch (IOException | ParseException e) 
+		{
 			e.printStackTrace();
 		}
-		
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+	
 		call.setCast(jo);
 		//System.out.println("FATTO CHIAMATA NOME");
 		//return jo;
