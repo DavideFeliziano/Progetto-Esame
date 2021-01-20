@@ -23,3 +23,8 @@ L’utente deve avviare il programma come applicazione SpringBoot e usare Postma
 Le richieste devono essere effettuate all’indirizzo: localhost:8080
 
 I comandi che l’utente può usare sono:
+
+## Test Elenco Puntato:
+*1
+*due
+*III
