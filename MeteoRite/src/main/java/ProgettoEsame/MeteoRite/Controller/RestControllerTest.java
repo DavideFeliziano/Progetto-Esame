@@ -23,14 +23,6 @@ import Utilities.CassaAttrezzi;
 @RestController
 public class RestControllerTest {
 	
-	/*Esempio RequestBody
-	 * 
-	@PostMapping("/test") //converte il json che metto su postman in un oggetti di Prova
-	public Prova provaPost(@RequestBody Prova body)
-	{
-		return body;
-	}
-	*/
 	
 	/**
 	 * Questa rotta effettua la chiamata all'API OpenWeatherMap.
@@ -67,22 +59,6 @@ public class RestControllerTest {
 		ge.arrayPrinter(ja);
 
 		return ja;
-	}
-	
-	
-	/**
-	 * Test per lettura file. non fa niente di utile, probabilmente verrà cancellato a breve.
-	 * @param par
-	 * @throws MalformedURLException
-	 * @throws IOException
-	 */
-	@GetMapping("/testfile") 
-	public void testfile(@RequestParam(name="nome_file", defaultValue = "test.txt") String par) throws MalformedURLException, IOException
-	{
-		Services serv = new Services();
-		JSONObject obj = new JSONObject();
-		GestioneFile gestF = new GestioneFile();
-		gestF.leggiFileTest(par+".json");
 	}
 	
 	
@@ -277,21 +253,6 @@ public class RestControllerTest {
 		return filtered;
 	}
 	
-	
-	/**
-	 * Questo è un metodo usato per testare funzioni specifiche prima di modificare le rotte.
-	 * Lo lascio che non si sa mai.
-	 * 
-	 */
-	@GetMapping("/t")
-	public void tester()
-	{
-		JSONObject prova = new JSONObject();
-		
-		
-	}
-		
-		
 		
 		
 	
