@@ -1,9 +1,9 @@
 # Progetto-Esame Meteorite 
-## METEORITE 
+## MeteoRite:
 Meteorite è un programma che permette all’utente di avere, tramite ricerca per città, previsioni meteorologiche riguardanti
 esclusivamente la temperatura: massima, minima e percepita.
  
- DESCRIZIONE:
+## DESCRIZIONE:
 Il nostro progetto si articola principalmente su  due macro funzioni: 
 -la prima è di fornire all’utente finale previsioni sulla temperatura della città ricercata fornendo previsioni a intervalli 
 di tre ore riguardanti la temperatura attuale, la massima, la minima e la temperatura percepita e di filtrare la ricerca in base 
@@ -14,11 +14,11 @@ la percentuale di errore nelle previsioni. Questa proprietà confronta i dati at
 
 I dati meteorologici vengono  reperiti da OpenWeatherMap tramite APIà
 
-ISTALLAZIONE 
+## ISTALLAZIONE: 
 Meteorite è installabile tramite prompt dei comandi 
 git clone https://github.com/DavideFeliziano/Progetto-Esame
 
-COME FUNZIONA
+## FUNZIONAMENTO:
 L’utente deve avviare il programma come applicazione SpringBoot e usare Postman o simili come interfaccia.
 Le richieste devono essere effettuate all’indirizzo: localhost:8080
 
