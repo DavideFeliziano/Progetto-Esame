@@ -63,5 +63,15 @@ Il programma provvederà a fare una chiamata tramite API al sito OpenWeatherMap 
 inoltre la chiamata specifica già l'unità di misura della temperatura in gradi Celsius.
 OpenWeatherMap restituirà un file JSON al programma dal quale prenderà solo le informazioni necessarie alla richiesta dell'utente.
 
+## ROTTE:
+
+N° | Tipo | Rotta | Descrizione
+----- | ------------ | -------------------- | ----------------------
+[1](#1) | ` GET ` | `/forecast?citta=` | restituisce un json con le previsioni riguardanti la temperatura della città indicata per i prossimi 5 giorni.
+[2](#2) | ` GET ` | `/save?citta=` | salva su un file locale il json risultante dalla chiamata all'API riguardante la città indicata.
+[3](#3) | ` GET ` | `/saveex` | salva un json su un file locale esattamente come /save ma prima di salvarlo ricava dal json dell'API solo i dati essenziali per calcolare poi le statistiche
+[4](#4) | ` GET ` | `/test?nome_file=` | genera statistiche partendo da un file salvato con la rotta /saveex. Restituisce massima, minima, media e varianza nei 5 giorni.
+[5](#5) | ` GET ` | `/builddatabase` | leggendo i file salvati in locale con la rotta /saveex, questa rotta genera un file .txt contente la precisione delle previsioni calcolata in base ai file letti.
+[6](#6) | ` POST ` | `/filter` | questa rotta chiede all'utente di inserire un body contenente un campo "nome" (per il nome della città) ed un campo "precisione" (per la percentuale di precisione che si vuole avere sulle previsioni visualizzate). Saranno visualizzate le previsioni solo dei giorni che in media (secondo i dati letti dal database costruito con la rotta apposita) hanno precisione maggiore o uguale a quella inserita dall'utente.
 
 
