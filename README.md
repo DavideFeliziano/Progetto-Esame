@@ -31,11 +31,14 @@ git clone https://github.com/DavideFeliziano/Progetto-Esame
 ## Use Case Diagram
 ![alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/UseCaseDiagram .jpg?raw=true)
 
+
 ## Class Diagram
 ![alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/esame.jpg?raw=true)
 
+
 ## Sequence Diagram
 ![alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/sequence diagram.jpeg?raw=true)
+
 
 
 ## Funzionamento:
