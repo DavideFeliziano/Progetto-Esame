@@ -48,7 +48,9 @@ Tuttavia lo "scheletro" del progetto è rimasto pressochè quello descritto.
 
 
 ## Sequence Diagram
-[alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/secuencediagram.jpg?raw=true)
+![alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/secuencediagram.jpg?raw=true)
+
+
 
 
 
