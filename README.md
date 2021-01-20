@@ -16,7 +16,7 @@ I dati meteorologici vengono  reperiti da OpenWeatherMap tramite APIà
 
 ISTALLAZIONE 
 Meteorite è installabile tramite prompt dei comandi 
-….
+git clone https://github.com/DavideFeliziano/Progetto-Esame
 
 COME FUNZIONA
 L’utente deve avviare il programma come applicazione SpringBoot e usare Postman o simili come interfaccia.
