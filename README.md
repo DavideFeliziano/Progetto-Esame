@@ -35,7 +35,7 @@ git clone https://github.com/DavideFeliziano/Progetto-Esame
 
 
 ## Sequence Diagram
-[alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/sequence-diagram.jpeg?raw=true)
+[alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/secuencediagram.jpeg?raw=true)
 
 
 
