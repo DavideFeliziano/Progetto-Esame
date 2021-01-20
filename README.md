@@ -26,6 +26,8 @@ git clone https://github.com/DavideFeliziano/Progetto-Esame
 
 <a name="config"></a>
 
+## UML:
+
 ## Use Case Diagram
 ![alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/usecasediagram.jpg?raw=true)
 
@@ -38,7 +40,11 @@ Del resto (salvare i dati dell'API per costruire uno storico dal quale poi calco
 ## Class Diagram
 ![alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/esame.jpg?raw=true)
 
+Facendo riferimento allo Use Case Diagram soprariportato, questo Class Diagram è per lo più non veritiero: mancano infatti molte classi e "Servizi" è scritto con due z.
 
+Questo perchè in fase di modellazione, molte criticità (dovute all'API stessa) erano incognite.
+
+Tuttavia lo "scheletro" del progetto è rimasto pressochè quello descritto.
 
 
 ## Sequence Diagram
