@@ -26,10 +26,8 @@ git clone https://github.com/DavideFeliziano/Progetto-Esame
 
 <a name="config"></a>
 
-## UML:
-
 ## Use Case Diagram
-![alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/UseCaseDiagram-.jpg?raw=true)
+![alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/usecasediagram.jpg?raw=true)
 
 
 ## Class Diagram
@@ -37,7 +35,7 @@ git clone https://github.com/DavideFeliziano/Progetto-Esame
 
 
 ## Sequence Diagram
-![alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/sequence-diagram.jpeg?raw=true)
+[alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/sequence-diagram.jpeg?raw=true)
 
 
 
