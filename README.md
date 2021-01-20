@@ -25,11 +25,17 @@ git clone https://github.com/DavideFeliziano/Progetto-Esame
 
 
 <a name="config"></a>
+
+## UML:
+
+## Use Case Diagram
+![alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/esame.jpg?raw=true)
+
+
 ## Funzionamento:
 L’utente deve avviare il programma come applicazione SpringBoot e usare Postman o simili come interfaccia.
 Le richieste devono essere effettuate all’indirizzo: localhost:8080
 
 I comandi che l’utente può usare sono:
 
-## TEST
-![alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/esame.jpg?raw=true)
+
