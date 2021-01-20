@@ -50,9 +50,9 @@ Tuttavia lo "scheletro" del progetto è rimasto pressochè quello descritto.
 ## Sequence Diagram
 ![alt text](https://github.com/DavideFeliziano/Progetto-Esame/blob/main/secuencediagram.jpg?raw=true)
 
+A differenza degli altri due schemi, il Sequence Diagram è stato realizzato quando una parte del programma era già funzionante.
 
-
-
+Pur non andando troppo nello specifico (perchè alcune classi non erano ancora state implementate o comunque hanno cambiato nome successivamente) riesce a rendere l'idea di come procede il programma: usa il nome della città inserito durante la chiamata e restituisce un json preso da OpenWeatherMap.
 
 ## Funzionamento:
 L’utente deve avviare il programma come applicazione SpringBoot e usare Postman o simili come interfaccia.
