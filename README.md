@@ -56,8 +56,12 @@ Pur non andando troppo nello specifico (perchè alcune classi non erano ancora s
 
 ## Funzionamento:
 L’utente deve avviare il programma come applicazione SpringBoot e usare Postman o simili come interfaccia.
-Le richieste devono essere effettuate all’indirizzo: localhost:8080
+Le richieste devono essere effettuate all’indirizzo: 
+**``` localhost:8080 ```**
 
-I comandi che l’utente può usare sono:
+Il programma provvederà a fare una chiamata tramite API al sito OpenWeatherMap creando la richiesta con la città inserita e la key per accedere alle funzioni di OpenWeatherMap,
+inoltre la chiamata specifica già l'unità di misura della temperatura in gradi Celsius.
+OpenWeatherMap restituirà un file JSON al programma dal quale prenderà solo le informazioni necessarie alla richiesta dell'utente.
+
 
 
