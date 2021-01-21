@@ -83,20 +83,26 @@ N° | Tipo | Rotta | Descrizione
 
 ## **Esempi di chiamate**:
 
-* *localhost:8080/forecast?citta=Pandoiano
+* `localhost:8080/forecast?citta=Pandoiano`
+
   Questa chiamata visualizzerà le temperature previste a Pandoiano
   
-* *localhost:8080/forecast
+* `localhost:8080/forecast`
+
   In questo modo la chiamata all'API avverrà utilizzando la città di Default (Ponsacco).
 
-* *localhost:8080/saveex?citta=Pontedera&giorno=16
+* `localhost:8080/saveex?citta=Pontedera&giorno=16`
+
   Salvo soltanto le informazioni sulla temperatura della città inserita; il file .json verrà salvato col nome "Pontedera16.json"
   
-* *localhost:8080/stat?nome_file=Lucca13
+* `localhost:8080/stat?nome_file=Lucca13`
+
   Mostra statistiche generate partendo dal file "Lucca13.json". Se non si inserisce questo parametro, la rotta leggerà un file di default.
   
-* *localhost:8080/filter; 
+* `localhost:8080/filter `
+
 Body: {"nome":"Pandoiano", "precisione":"100.0"}
+
   Questa rotta visualizzerà le previsioni delle temperature per la città di Pandoiano, soltanto nei gironi che secondo il database generato hanno una precisione del         100%
 
 
