@@ -107,7 +107,30 @@ N° | Tipo | Rotta | Descrizione
 
 
 ## **Elenco Puntato che spiega le rotte nello specifico**
-* si
+
+## /forecast
+
+Come intuibile dal nome, questa è la rotta che fornisce le previsioni; tuttavia, non si limita a fare una chiamata all'API.
+
+Dopo aver ottenuto il json dall'API, lo salva su un oggetto che verrà letto e "smembrato" poichè esso contiene molte informazioni superflue (ai fini di questo progetto) e ripetute.
+
+Accedendo al campo "list" del json, salviamo in un JSONObject soltanto i campi riguardanti la temperatura.
+
+Ripetendo questa operazione per ogni elemento di "list" viene caricato il JSONArray che verrà restituito dalla rotta.
+
+Verranno visualizzate le previsioni ogni 3 ore per i prossimi 5 giorni.
+
+Nota: internamente questa rotta converte il nome della città inserito come parametro in un ID usato da OpenWeatherMap, di più sull'argomento nella sezione "Criticità e Problemi Riscontrati"
+
+## /save & /saveex
+
+Questi metodi, di base molto simili, permettono di salvare su file le previsioni ottenute.
+
+/save è una prima implementazione di questa funzione; si limita infatti a salvare il JSON dell'API, senza porre alcun filtro alle informazioni che verranno riportate sul file.
+
+Malgrado non sia strettamente necessaria al funzionamento, questa rotta è stata fondamentale durante lo sviluppo per controllare che la sua "estensione" /saveex funzionasse correttamente.
+
+/saveex 
 
 * scherza
 
@@ -119,6 +142,7 @@ N° | Tipo | Rotta | Descrizione
 
 
 ## Criticità e Problemi riscontrati durante lo Sviluppo:
+-ID
 
 
 
