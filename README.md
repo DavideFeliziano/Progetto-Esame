@@ -108,6 +108,7 @@ N° | Tipo | Rotta | Descrizione
 
 ## **Elenco Puntato che spiega le rotte nello specifico**
 
+
 ## /forecast
 
 Come intuibile dal nome, questa è la rotta che fornisce le previsioni; tuttavia, non si limita a fare una chiamata all'API.
@@ -122,6 +123,7 @@ Verranno visualizzate le previsioni ogni 3 ore per i prossimi 5 giorni.
 
 Nota: internamente questa rotta converte il nome della città inserito come parametro in un ID usato da OpenWeatherMap, di più sull'argomento nella sezione "Criticità e Problemi Riscontrati"
 
+
 ## /save & /saveex
 
 Questi metodi, di base molto simili, permettono di salvare su file le previsioni ottenute.
@@ -130,19 +132,62 @@ Questi metodi, di base molto simili, permettono di salvare su file le previsioni
 
 Malgrado non sia strettamente necessaria al funzionamento, questa rotta è stata fondamentale durante lo sviluppo per controllare che la sua "estensione" /saveex funzionasse correttamente.
 
-/saveex 
+/saveex come dice anche il nome, è una versione "esclusiva" di /save (forse il nome è leggermente controintuitivo). 
 
-* scherza
+Quello che fa è sempre salvare un file ma, a differenza dell'altra rotta, seleziona solo le parti riguardanti la temperatura dal json.
 
-* mi
+Altra particolarità di questa rotta è il parametro "giorno"; questo è utilizzato per la creazione del database locale (spiegato meglio in seguito) poichè è necessario salvare le previsioni per una città in più giorni (per poi confrontare se si sono avverate o meno).
 
-* dissocio
 
-## Possibili Errori e situazioni non previste:
+## /stat
+
+Una volta utilizzando /save, con questa rotta è possibile visualizzare statistiche su quelle previsioni.
+
+Il funzionamento interno è analogo (seppur leggermente diverso, infatti utilizza alcuni overload) a quello di /forecast e /saveex ma anzichè limitarsi a filtrare i dati ottenuti, li controlla, li confronta e li "impacchetta" in un jsonObject che viene poi visualizzato dall'utente.
+
+Queste statistiche sono generate solo sull'arco dei 5 giorni, al momento non è possibile ottenere statistiche su periodi di tempo più lunghi.
+
+
+## /builddatabase
+
+Questa è probabilmente la rotta più imperativa e in un certo senso "forzata" di tutto il progetto.
+
+In breve, per giudicare l'attendibilità delle previsioni è stato necessario salvare le previsioni di alcune città per 5 giorni. A questo punto, leggendo i file, questa rotta confonta la previsione fatta nei giorni precedenti, con il meteo del giorno attuale.
+
+Per comodità, il salvataggio delle previsioni è stato fatto manualmente ogni giorno su una manciata di città prese come campione.
+
+Tramite alcuni metodi, dopo aver letto i file e salvato i valori, il programma confronta uno ad uno i valori previsti e quelli effettivi calcolandone la variazione percentuale da cui calcola poi la precisione (il complementare in pratica).
+
+Questi valori della precisione vengono salvati su un array, da cui poi calcola in media la precisione per ogni giorno.
+
+Alla fine verrà scritto su di un file, quanto sono precise le previsioni per  ogni giorno.
+
+Nota: si considera che le previsioni odierne abbiano una precisione del 100%
+
+
+## /filter
+
+Ovviamente questa rotta utilizzerà il file creato da /databasebuilder. 
+
+Una volta letto il file e caricato un Vector, confronterà il valore di precisione inserito dall'utente con quelli presenti nel vector.
+
+La chiamata all'API avviene analogamente a quella effettuata da /forecast con la differenza però che, oltre a filtrare il json per restituire solo i dati riguardanti la temperatura, filtrerà le previsioni in modo che l'utente veda solo quelle dei giorni per cui la precisione media (calcolata in precedenza) sia maggiore o uguale a quella specificata durante la chiamata.
+
+
+## ** Possibili Errori e situazioni non previste: **
+
+Nome città errato
+stat funziona solo se non si specifica giorno in saveex
+file del database
+date
 
 
 ## Criticità e Problemi riscontrati durante lo Sviluppo:
--ID
+-ID, json nel json
+-arrotondamento e conversione int double
+-database, salvataggio manuale
+-date
+
 
 
 
