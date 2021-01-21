@@ -187,7 +187,7 @@ Un altro problema potrebbe essere costituito dagli omonimi: in caso di città co
 
 Malgrado possa quindi sembrare che MeteoRite sia un programma che non punta ad essere internazionale (considerando i gradi Celsius che non possono essere modificati e gli omonimi che non vengono gestiti) esso accetta i nomi delle città anche se scritti in inglese (che in realtà è una cosa che gestisce l'api ma è pur sempre una feature)
 
-* date
+* date:
 
 Come verrà spiegato nella sezione sottostante, la gestione delle date è stata piuttosto problematica.
 
@@ -197,7 +197,7 @@ Benchè questo non costituisca alcun problema per i test fatti finora, potrebber
 
 Pur essendo un'evenienza remota, è giusto evidenziarla.
 
-* file del database
+* file del database:
 
 Come spiegato precedentemente, la rotta che crea il database è piuttosto imperativa. Fa inoltre uso di file specifici senza i quali, ad alcuni metodi mancherebbero i file da leggere.
 
@@ -210,12 +210,60 @@ Qualora non fossero presenti questi file, sarà impossibile generare il database
 
 ## Criticità e Problemi riscontrati durante lo Sviluppo:
 
-Durante lo sviluppo di MeteoRite, si sono presentati diversi problemi; problemi che hanno portato a scelte machiavelliche 
--ID, json nel json
--arrotondamento e conversione int double
--database, salvataggio manuale
--date
+Durante lo sviluppo di MeteoRite, si sono presentati diversi problemi; problemi che hanno portato a scelte machiavelliche volte solamente a far funzionare il programma nei tempi previsti.
 
+Questo paragrafo non troverebbe spazio in un readme professionale poichè non fornisce informazioni sul programma ma giustificazioni per il programma.
+
+Andiamo quindi a vedere alcuni dei problemi incontrati nel tormento sviluppo di questo tormentato programma.
+
+
+* ID
+
+Le specifiche imponevano che il programma utilizzasse l'ID delle città per fare le chiamate all'API. Per convertire il nome inserito dall'utente in un ID, sarebbe necessario leggere un enorme file fornito da OpenWeather.
+
+Per velocizzare l'operazione (non perchè fosse più complicato) si è preferito ottenere l'ID effettuando una chiamata all'API utilizzando il nome della città.
+
+Dal json fornito è infatti molto più rapida l'operazione di estrazione dell'ID.
+
+
+* arrotondamento e conversione int double
+
+Calcolando la media della temperatura, i valori ottenuti presentavano quasi sempre una decina di cifre decimali (a volte anche fino ad eccedere la dimensione del double).
+
+Poichè la gestione delle cifre decimali in java è meno semplice del previsto, è stato implementato un metodo orribile che però fa il suo lavoro e rende più gradevoli e uniformi i file salvati.
+
+Un altro problema con conseguenza catastrofiche è stato introdotto dall'API stessa. 
+
+Capita infatti, che a volte la temperatura minima venga fornita tramite un valore intero (vale a dire che in base alla minima prevista in una città il programma funzionava o meno).
+
+Non è chiaro il motivo di questa scelta da parte di OpenWeather ma, chiaramente, è stato necessario fare un casting in modo che qualsiasi formato l'api avesse deciso di usare, non ci sarebbero state eccezioni.
+
+
+* date
+
+come accennato in precedenza, gestire le date non è stato facile ed è stato fatto in un modo che potremmo definire "bruttino".
+
+Poichè l'api salva le previsioni indicando data e ora, è stato necessario fare una scelta.
+
+Portarsi dietro giorno, mese, anno e ora non solo sarebbe stato superfluo ma nei test ha creato un'infinità di problemi.
+
+La soluzione è stata quindi estrapolare soltanto il giorno da una stringa su cui veniva salvata la data. A parte l'eventualità descritta nella sezione sopra, non si sono verificati problemi con questa soluzione nei test fatti.
+
+* database, salvataggio manuale
+
+Ultima criticità affrontata, probabilmente la più grande: il database.
+
+La versione gratuita di questa API non offre uno storico delle previsioni, non è possibile dunque stabilire la precisione guardando al passato. E' stato necessario uno sguardo volto al futuro.
+
+Al presente in realtà. 
+
+Sebbene ci sarebbero stati modi più efficiente per salvare i file in automatico e costruire questo database, quello del salvataggio manuale è stato il compromesso col miglior costo opportunità, se così vogliamo dire.
+
+Oltretutto, dubito che qualsiasi numero di file, città monitorate o salvataggi orari avrebbero cambiato gran chè i risultati ottenuti.
+
+Controllando i json si nota infatti, che apparentemente OpenWeather ha una precisione quasi assoluta, anche a distanza di 5 giorni (il che è praticamente impossibile, ma non siamo qui a discutere di metereologia) le temperature variano di pochi decimi tra il valore previsto e quello misurato.
+
+Per questo motivo, il file del database è stato ritoccato a mano, in modo da avere una parvenza di coerenza (seppur impossbile poichè la precisione rimane intorno al 99%) e da poter controllare facendo un paio di test che il filtraggio funzionasse correttamente.
 
 
 
