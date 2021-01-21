@@ -106,7 +106,7 @@ N° | Tipo | Rotta | Descrizione
   Questa rotta visualizzerà le previsioni delle temperature per la città di Pandoiano, soltanto nei gironi che secondo il database generato hanno una precisione del         100%
 
 
-## **Elenco Puntato che spiega le rotte nello specifico**
+## **Breve spiegazione delle rotte**
 
 
 ## /forecast
@@ -174,15 +174,43 @@ Una volta letto il file e caricato un Vector, confronterà il valore di precisio
 La chiamata all'API avviene analogamente a quella effettuata da /forecast con la differenza però che, oltre a filtrare il json per restituire solo i dati riguardanti la temperatura, filtrerà le previsioni in modo che l'utente veda solo quelle dei giorni per cui la precisione media (calcolata in precedenza) sia maggiore o uguale a quella specificata durante la chiamata.
 
 
-## ** Possibili Errori e situazioni non previste: **
+## **Possibili Errori e situazioni non previste:**
+Benchè il funzionamento del programma sia piuttosto semplice e all'utente siano richieste delle azioni basialari, per la legge di Murphy è possibile che si verifichino alcuni errori che il programma non gestisce e che porterebbero quindi a crash o comportamenti imprevesti che per motivi di tempo, difficoltà o altre giustificazioni poco plausibili non sono stati sviscerati in fase di sviluppo.
 
-Nome città errato
-stat funziona solo se non si specifica giorno in saveex
-file del database
-date
+Di seguito ve ne sono riportati alcuni.
+
+* Nome città errato: 
+
+Banalmente, il problema più comune (che durante lo sviluppo però non si è mai verificato) è che l'utente inserisca un nome errato per il parametro "citta" e che quindi OpenWeatherMap non riesca a fornire delle previsioni.
+
+Un altro problema potrebbe essere costituito dagli omonimi: in caso di città con lo stesso nome ma in stati diversi, non avendo specificato il campo "country" durante la chiamata, OpenWeathereMap sceglie la prima città. 
+
+Malgrado possa quindi sembrare che MeteoRite sia un programma che non punta ad essere internazionale (considerando i gradi Celsius che non possono essere modificati e gli omonimi che non vengono gestiti) esso accetta i nomi delle città anche se scritti in inglese (che in realtà è una cosa che gestisce l'api ma è pur sempre una feature)
+
+* date
+
+Come verrà spiegato nella sezione sottostante, la gestione delle date è stata piuttosto problematica.
+
+Questo ha portato al salvataggio soltanto del giorno, tralasciando quindi il mese.
+
+Benchè questo non costituisca alcun problema per i test fatti finora, potrebbero verificarsi dei conflitti qualora si abbiano previsioni per una stessa città lo stesso giorno di mesi diversi.
+
+Pur essendo un'evenienza remota, è giusto evidenziarla.
+
+* file del database
+
+Come spiegato precedentemente, la rotta che crea il database è piuttosto imperativa. Fa inoltre uso di file specifici senza i quali, ad alcuni metodi mancherebbero i file da leggere.
+
+Questo perchè i file da leggere sono preimpostati (al metodo viene passato un array di nomi di città che sono stati salvati precedentemente) e nonostante il metodo vada automaticamente avanti a leggere per i successivi 5 giorni.
+
+Per ricostruire il database con dei nuovi file bisogna salvare le precisioni le previsioni per un giorno (il file deve essere salvato con saveex senza fornire il parametro "giorno") e poi salvare nei giorni seguenti le previsioni ma stavolta indicando il giorno (che verrà accodato al nome del file).
+
+Qualora non fossero presenti questi file, sarà impossibile generare il database. Giustificazioni per questa ed altre scelte sono fornite nell'ultimo paragrafo.
 
 
 ## Criticità e Problemi riscontrati durante lo Sviluppo:
+
+Durante lo sviluppo di MeteoRite, si sono presentati diversi problemi; problemi che hanno portato a scelte machiavelliche 
 -ID, json nel json
 -arrotondamento e conversione int double
 -database, salvataggio manuale
