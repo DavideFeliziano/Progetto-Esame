@@ -101,17 +101,19 @@ N° | Tipo | Rotta | Descrizione
   
 * `localhost:8080/filter `
 
-Body: {"nome":"Pandoiano", "precisione":"100.0"}
-
+  Body: {"nome":"Pandoiano", "precisione":"100.0"}
+  
   Questa rotta visualizzerà le previsioni delle temperature per la città di Pandoiano, soltanto nei gironi che secondo il database generato hanno una precisione del         100%
 
 
 ## **Elenco Puntato che spiega le rotte nello specifico**
-* palle
+* si
 
-* testicoli
+* scherza
 
-* enormi
+* mi
+
+* dissocio
 
 ## Possibili Errori e situazioni non previste:
 
