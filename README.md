@@ -26,8 +26,7 @@ Meteorite è installabile tramite prompt dei comandi
 git clone https://github.com/DavideFeliziano/Progetto-Esame
 ```
 
-
-<a name="config"></a>
+Una volta installato (o importanto il progetto su un IDE) e mandato in esecuzione, il servizio sarà in ascolto e risponderà a chiamate fatte tramite Postman o browser.
 
 ## UML:
 
@@ -57,14 +56,19 @@ A differenza degli altri due schemi, il Sequence Diagram è stato realizzato qua
 
 Pur non andando troppo nello specifico (perchè alcune classi non erano ancora state implementate o comunque hanno cambiato nome successivamente) riesce a rendere l'idea di come procede il programma: usa il nome della città inserito durante la chiamata e restituisce un json preso da OpenWeatherMap.
 
+Già da questo schema si nota come, per gestire l'enorme json fornito dall'API, siano state necessarie molte classi intermedie che "snelliscono" il json, salvando solo le parti necessarie.
+
 ## Funzionamento:
 L’utente deve avviare il programma come applicazione SpringBoot e usare Postman o simili come interfaccia.
+
 Le richieste devono essere effettuate all’indirizzo: 
+
 **``` localhost:8080 ```**
 
-Il programma provvederà a fare una chiamata tramite API al sito OpenWeatherMap creando la richiesta con la città inserita e la key per accedere alle funzioni di OpenWeatherMap,
-inoltre la chiamata specifica già l'unità di misura della temperatura in gradi Celsius.
-OpenWeatherMap restituirà un file JSON al programma dal quale prenderà solo le informazioni necessarie alla richiesta dell'utente.
+Il programma provvederà a fare una chiamata tramite all'API OpenWeatherMap.
+Durante la richiesta, il programma inserisce in automatico la key per l'API e selezione come unità di misura i gradi Celsius.
+
+NOTA: Tutte le rotte sotto riportate, se non viene inserito il parametro richiesto, effettueranno la chiamata utilizzando un valore di Default.
 
 ## ROTTE:
 
@@ -72,9 +76,42 @@ N° | Tipo | Rotta | Descrizione
 ----- | ------------ | -------------------- | ----------------------
 [1](#1) | ` GET ` | `/forecast?citta=` | restituisce un json con le previsioni riguardanti la temperatura della città indicata per i prossimi 5 giorni.
 [2](#2) | ` GET ` | `/save?citta=` | salva su un file locale il json risultante dalla chiamata all'API riguardante la città indicata.
-[3](#3) | ` GET ` | `/saveex` | salva un json su un file locale esattamente come /save ma prima di salvarlo ricava dal json dell'API solo i dati essenziali per calcolare poi le statistiche
-[4](#4) | ` GET ` | `/test?nome_file=` | genera statistiche partendo da un file salvato con la rotta /saveex. Restituisce massima, minima, media e varianza nei 5 giorni.
+[3](#3) | ` GET ` | `/saveex?citta=&?giorno=` | salva un json su un file locale esattamente come /save ma prima di salvarlo ricava dal json dell'API solo i dati essenziali per calcolare poi le statistiche. Inoltre, è presente un secondo parametro (opzionale) che aggiunge al nome del file salvata una stringa (vedremo più avanti come è utilizzato)
+[4](#4) | ` GET ` | `/stat?nome_file=` | genera statistiche partendo da un file salvato con la rotta /saveex. Restituisce massima, minima, media e varianza nei 5 giorni.
 [5](#5) | ` GET ` | `/builddatabase` | leggendo i file salvati in locale con la rotta /saveex, questa rotta genera un file .txt contente la precisione delle previsioni calcolata in base ai file letti.
 [6](#6) | ` POST ` | `/filter` | questa rotta chiede all'utente di inserire un body contenente un campo "nome" (per il nome della città) ed un campo "precisione" (per la percentuale di precisione che si vuole avere sulle previsioni visualizzate). Saranno visualizzate le previsioni solo dei giorni che in media (secondo i dati letti dal database costruito con la rotta apposita) hanno precisione maggiore o uguale a quella inserita dall'utente.
+
+## **Esempi di chiamate**:
+
+* *localhost:8080/forecast?citta=Pandoiano
+  Questa chiamata visualizzerà le temperature previste a Pandoiano
+  
+* *localhost:8080/forecast
+  In questo modo la chiamata all'API avverrà utilizzando la città di Default (Ponsacco).
+
+* *localhost:8080/saveex?citta=Pontedera&giorno=16
+  Salvo soltanto le informazioni sulla temperatura della città inserita; il file .json verrà salvato col nome "Pontedera16.json"
+  
+* *localhost:8080/stat?nome_file=Lucca13
+  Mostra statistiche generate partendo dal file "Lucca13.json". Se non si inserisce questo parametro, la rotta leggerà un file di default.
+  
+* *localhost:8080/filter; 
+Body: {"nome":"Pandoiano", "precisione":"100.0"}
+  Questa rotta visualizzerà le previsioni delle temperature per la città di Pandoiano, soltanto nei gironi che secondo il database generato hanno una precisione del         100%
+
+
+## **Elenco Puntato che spiega le rotte nello specifico**
+* palle
+
+* testicoli
+
+* enormi
+
+## Possibili Errori e situazioni non previste:
+
+
+## Criticità e Problemi riscontrati durante lo Sviluppo:
+
+
 
 
